@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOpsDashboard.Web", "DevOpsDashboard.Web\DevOpsDashboard.Web.csproj", "{DD591ACF-BF22-4B87-805A-C827DCD8F156}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOpsDashboard.Model", "DevOpsDashboard.Model\DevOpsDashboard.Model.csproj", "{3104FDE2-1654-4E08-B133-05165C7EFB3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DD591ACF-BF22-4B87-805A-C827DCD8F156}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD591ACF-BF22-4B87-805A-C827DCD8F156}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD591ACF-BF22-4B87-805A-C827DCD8F156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3104FDE2-1654-4E08-B133-05165C7EFB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3104FDE2-1654-4E08-B133-05165C7EFB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3104FDE2-1654-4E08-B133-05165C7EFB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3104FDE2-1654-4E08-B133-05165C7EFB3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
