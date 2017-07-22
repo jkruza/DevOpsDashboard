@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOpsDashboard.Web", "DevO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOpsDashboard.Model", "DevOpsDashboard.Model\DevOpsDashboard.Model.csproj", "{3104FDE2-1654-4E08-B133-05165C7EFB3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOpsDashboard.ModelTests", "DevOpsDashboard.ModelTests\DevOpsDashboard.ModelTests.csproj", "{367B76F7-A625-49C7-94F6-142DAF314FD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3104FDE2-1654-4E08-B133-05165C7EFB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3104FDE2-1654-4E08-B133-05165C7EFB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3104FDE2-1654-4E08-B133-05165C7EFB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367B76F7-A625-49C7-94F6-142DAF314FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367B76F7-A625-49C7-94F6-142DAF314FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367B76F7-A625-49C7-94F6-142DAF314FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367B76F7-A625-49C7-94F6-142DAF314FD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

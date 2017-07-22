@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace DevOpsDashboard.Model
 {
-    class DashboardMessageGeneric:DashboadMessageBase
+    public class DashboardMessageGeneric:DashboadMessageBase
     {
-        public DashboardMessageGeneric(string EventPayload)
+        public DashboardMessageGeneric()
         {
-            SourceData = EventPayload;
-            Title = "Generic Event";
-            Message = "Generic event stub message";
-            Category = "General";
-            Context = String.Empty;
-            Timestamp = DateTime.Now;
+            this.Category = "Generic";
+            this.Context = "";
+            this.Timestamp = DateTime.Now;
         }
+        
 
         public DashboardMessageGeneric(string Title,string Message,string Category="Generic", string Context="")
         {
@@ -26,6 +25,14 @@ namespace DevOpsDashboard.Model
             this.Category = Category;
             this.Context = String.Empty;
             Timestamp = DateTime.Now;
+        }
+
+        public static DashboardMessageGeneric CreateFromJson(string EventPayload)
+        {
+            DashboardMessageGeneric msg = new DashboardMessageGeneric();
+            msg = JsonConvert.DeserializeObject<DashboardMessageGeneric>(EventPayload);
+            msg.SourceData = EventPayload;
+            return msg;
         }
     }
 }

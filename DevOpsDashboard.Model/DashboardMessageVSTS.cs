@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevOpsDashboard.Model
 {
-    class DashboardMessageVSTS:DashboadMessageBase
+    public class DashboardMessageVSTS:DashboadMessageBase
     {
         public DashboardMessageVSTS(string EventPayload)
         {
