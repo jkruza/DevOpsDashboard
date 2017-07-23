@@ -1,4 +1,6 @@
 ﻿using DevOpsDashboard.Model;
+using DevOpsDashboard.Web.Hubs;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,8 @@ namespace DevOpsDashboard.Web.Controllers.API
         [Route("api/webhook/generic")]
         public DashboardMessageGeneric Post([FromBody]DashboardMessageGeneric msg)
         {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<DashboardMessageHub>();
+            hubContext.Clients.All.broadcastDashboardMessage(msg);
             return msg;
         }
         /*

@@ -1,4 +1,6 @@
 ﻿using DevOpsDashboard.Model;
+using DevOpsDashboard.Web.Hubs;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,9 @@ namespace DevOpsDashboard.Web.Controllers.API
 
             DashboardMessageGitHub msg = new DashboardMessageGitHub(RawJSON, GitHubEvent);
 
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<DashboardMessageHub>();
+            hubContext.Clients.All.broadcastDashboardMessage(msg);
+            hubContext.
             return msg;
 
         }
