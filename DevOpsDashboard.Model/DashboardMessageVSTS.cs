@@ -33,7 +33,7 @@ namespace DevOpsDashboard.Model
 
                 case "ms.vss-release.deployment-started-event":
                     Category = "Release";
-                    Context = json["resource"]["release"]["releaseDefinition"]["id"] + "_" + json["resource"["environment"]["id"];
+                    Context = json["resource"]["release"]["releaseDefinition"]["id"] + "_" + json["resource"]["environment"]["id"];
                     Title = json["resource"]["release"]["releaseDefinition"]["name"].ToString();// + ": " + json["resource"]["deployment"]["releaseDefinition"]["name"];
                     Status = json["resource"]["environment"]["deploymentStatus"].ToString();
                     break;
