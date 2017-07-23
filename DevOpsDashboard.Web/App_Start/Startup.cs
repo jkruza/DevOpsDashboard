@@ -5,7 +5,7 @@ using System.Web;
 using Microsoft.Owin;
 using Owin;
 
-namespace DevOpsDashboard.Web.App_Start
+namespace DevOpsDashboard.Web
 {
     public class Startup
     {
