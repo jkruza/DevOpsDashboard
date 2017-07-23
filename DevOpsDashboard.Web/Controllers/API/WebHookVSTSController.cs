@@ -11,22 +11,20 @@ using System.Web.Http;
 
 namespace DevOpsDashboard.Web.Controllers.API
 {
-    public class WebHookGitHubController : ApiController
+    public class WebHookVSTSController : ApiController
     {
 
 
 
         [HttpPost]
-        [Route("api/webhook/github")]
-        public async Task<DashboardMessageGitHub> PostRawBufferManual()
+        [Route("api/webhook/vsts")]
+        public async Task<DashboardMessageVSTS> PostRawBufferManual()
         {
             
-            IEnumerable<string> headerValues = Request.Headers.GetValues("X-GitHub-Event");
-            string GitHubEvent = headerValues.FirstOrDefault();
-
+        
             string RawJSON = await Request.Content.ReadAsStringAsync();
 
-            DashboardMessageGitHub msg = new DashboardMessageGitHub(RawJSON, GitHubEvent);
+            DashboardMessageVSTS msg = new DashboardMessageVSTS(RawJSON);
 
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<DashboardMessageHub>();
             hubContext.Clients.All.broadcastDashboardMessage(msg);

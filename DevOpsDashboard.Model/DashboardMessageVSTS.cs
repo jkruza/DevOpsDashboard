@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,15 @@ namespace DevOpsDashboard.Model
         public DashboardMessageVSTS(string EventPayload)
         {
             SourceData = EventPayload;
-            Title = "VSTS Event";
-            Message = "VSTS event stub message";
-            Category = "General";
             Context = String.Empty;
             Timestamp = DateTime.Now;
+
+            JObject json = JObject.Parse(EventPayload);
+            
+            Message = json["message"]["text"].ToString();
+            
+            Title = "VSTS Event";
+            Category = "General";
         }
     }
 }
