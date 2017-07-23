@@ -15,5 +15,7 @@ namespace DevOpsDashboard.Model
         public string SourceData { get; set; }
         public DateTime Timestamp { get; set; }
         public string[] Details { get; set; }
+
+        public string Status { get; set; }
     }
 }

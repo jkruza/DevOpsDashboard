@@ -14,6 +14,7 @@ namespace DevOpsDashboard.Model
             this.Category = "Generic";
             this.Context = "";
             this.Timestamp = DateTime.Now;
+            this.Status = "Unknown";
         }
         
 
@@ -25,6 +26,7 @@ namespace DevOpsDashboard.Model
             this.Category = Category;
             this.Context = String.Empty;
             Timestamp = DateTime.Now;
+            this.Status = "Unknown";
         }
 
         public static DashboardMessageGeneric CreateFromJson(string EventPayload)

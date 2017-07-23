@@ -12,7 +12,7 @@ namespace DevOpsDashboard.Model
         public DashboardMessageGitHub(string EventPayload, string EventType)
         {
             SourceData = EventPayload;
-
+            this.Status = "Unknown";
             Timestamp = DateTime.Now;
 
             switch (EventType.ToLower())
