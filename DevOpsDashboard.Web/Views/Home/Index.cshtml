@@ -37,9 +37,24 @@
 
                     case "Release":
                     case "Build":
-                        var s = json.Message;
+                        var m = json.Message;
                         var t = json.Title;
-                        $("#blist").append("<div><h2>" + t+"</h2><p>" +s+ "</p></div>");
+                        var cls = "";
+                        var s = json.Status;
+                        switch (s)
+                        {
+                            case "succeeded": 
+                            case "success":
+                                cls = "alert-success";
+                                break;
+
+                            case "failed":
+                            case "rejected":
+                                cls = "alert-danger";
+                                break;
+                        }
+
+                        $("#blist").append('<div class="alert '+cls+'"><strong>' + t+"</strong><p>" +m+ "</p></div>");
                         while ($("#blist").children().length > 20) {
                             $('#blist div:eq(0)').remove();
                         }

@@ -27,15 +27,15 @@ namespace DevOpsDashboard.Model
                 case "ms.vss-release.deployment-completed-event":
                     Category = "Release";
                     Context = json["resource"]["deployment"]["releaseDefinition"]["id"] + "_" + json["resource"]["deployment"]["releaseEnvironment"]["id"];
-                    Title = json["resource"]["deployment"]["releaseDefinition"]["name"] + ": " + json["resource"]["deployment"]["releaseDefinition"]["name"];
+                    Title = json["resource"]["deployment"]["releaseDefinition"]["name"].ToString();// + ": " + json["resource"]["deployment"]["releaseDefinition"]["name"];
                     Status = json["resource"]["deployment"]["deploymentStatus"].ToString();
                     break;
 
                 case "ms.vss-release.deployment-started-event":
                     Category = "Release";
                     Context = json["resource"]["deployment"]["releaseDefinition"]["id"] + "_" + json["resource"]["deployment"]["releaseEnvironment"]["id"];
-                    Title = json["resource"]["deployment"]["releaseDefinition"]["name"] + ": " + json["resource"]["deployment"]["releaseDefinition"]["name"];
-                    Status = "Pending";
+                    Title = json["resource"]["deployment"]["releaseDefinition"]["name"].ToString();// + ": " + json["resource"]["deployment"]["releaseDefinition"]["name"];
+                    Status = "pending";
                     break;
 
                 case "build.complete":
