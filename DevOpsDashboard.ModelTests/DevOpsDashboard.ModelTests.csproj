@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DashboardMessageGenericTests.cs" />
+    <Compile Include="DashboardMessageGitHubTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
