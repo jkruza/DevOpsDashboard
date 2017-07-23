@@ -27,11 +27,12 @@ namespace DevOpsDashboard.Model.Tests
         public void DashboardMessageGenericTest_Params()
         {
             DashboardMessageGeneric msg = new DashboardMessageGeneric("Title", "Message");
+            Assert.AreEqual("Generic", msg.Category);
+            Assert.AreEqual("", msg.Context);
+            Assert.AreEqual("Title", msg.Title);
             Assert.AreEqual("Message",msg.Message );
-            Assert.AreEqual("Title",msg.Title);
-            Assert.AreEqual("Generic",msg.Category);
-            Assert.AreEqual("",msg.Context);
 
+            
         }
     }
 }

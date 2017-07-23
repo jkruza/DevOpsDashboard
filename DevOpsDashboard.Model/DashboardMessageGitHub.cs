@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,14 @@ namespace DevOpsDashboard.Model
 
             switch (EventType.ToLower())
             {
-                case "push": break;
+                case "push": 
+                    Category = "Code";
+                    Context = "";
+                    ParseEventPush(EventPayload);
+
+                    break;
+
+
                 default:
                     Title = "Github Event";
                     Message = "Github Event stub message";
@@ -30,7 +38,10 @@ namespace DevOpsDashboard.Model
 
         private void ParseEventPush(string EventJSON)
         {
-
+            JObject json = JObject.Parse(EventJSON);
+            Title = String.Format("Code push to '{0}'", json["repository"]["name"]);
+            Message = String.Format("{0} has pushed commits to repository '{1}'", json["pusher"]["name"], json["repository"]["name"]);
+            Details= json["commits"].Select<JToken,string>(x => x["message"].ToString()).ToArray();
         }
     }
 }

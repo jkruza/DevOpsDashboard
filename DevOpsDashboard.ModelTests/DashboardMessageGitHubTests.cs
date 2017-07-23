@@ -179,11 +179,13 @@ namespace DevOpsDashboard.Model.Tests
                 }";
 
             DashboardMessageGitHub msg = new DashboardMessageGitHub(json, "push");
-
+            Assert.AreEqual("Code", msg.Category);
+            Assert.AreEqual("Code push to 'public-repo'", msg.Title);
+            Assert.AreEqual("", msg.Context);
             Assert.AreEqual("baxterthehacker has pushed commits to repository 'public-repo'", msg.Message);
-            Assert.AreEqual( "Code push to 'public-repo'", msg.Title);
-            Assert.AreEqual("code", msg.Category);
-            Assert.AreEqual("",msg.Context);
+            Assert.AreEqual(1, msg.Details.Length);
+            Assert.AreEqual("Update README.md", msg.Details[0]);
+            
 
         }
     }
