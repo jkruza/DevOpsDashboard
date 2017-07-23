@@ -6,7 +6,7 @@
 
 <div class="row" id="lists">
     <div class="col-md-8"><ul id="list"></ul></div>
-    <div class="col-md-4"><ul id="blist"></ul></div>
+    <div class="col-md-4"><div id="blist"></div></div>
 </div>
 
 
@@ -33,7 +33,17 @@
                 }
                 var str = JSON.stringify(json, null, 2);
               
-                switch (json.eventType) {
+                switch (json.Category) {
+
+                    case "Release":
+                    case "Build":
+                        var s = json.Message;
+                        var t = json.Title;
+                        $("#blist").append("<div><h2>" + t+"</h2><p>" +s+ "</p></div>");
+                        while ($("#blist").children().length > 20) {
+                            $('#blist div:eq(0)').remove();
+                        }
+                        break;
 
                     default:
                         var s = json.Message;
