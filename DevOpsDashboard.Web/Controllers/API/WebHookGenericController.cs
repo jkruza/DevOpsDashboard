@@ -19,7 +19,7 @@ namespace DevOpsDashboard.Web.Controllers.API
         {
             return msg;
         }
-        
+        /*
         [HttpPost]
        [Route("api/webhook/generic/json")]
         public async Task PostRawBufferManual()
@@ -28,6 +28,6 @@ namespace DevOpsDashboard.Web.Controllers.API
             DashboardMessageGeneric msg=DashboardMessageGeneric.CreateFromJson(RawJSON);
             
         }
-   
+   */
     }
 }
