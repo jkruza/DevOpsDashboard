@@ -38,6 +38,7 @@ namespace DevOpsDashboard.Model
                     Status = json["resource"]["environment"]["deploymentStatus"].ToString();
                     break;
 
+
                 case "build.complete":
                     Category = "Build";
                     Context = json["resource"]["definition"]["id"] + "_" + json["resource"]["id"];
