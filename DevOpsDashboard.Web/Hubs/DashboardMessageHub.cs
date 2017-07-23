@@ -9,11 +9,11 @@ namespace DevOpsDashboard.Web.Hubs
 {
     public class DashboardMessageHub : Hub
     {
-        /*
+        
         public void BroadcastDashboardMessage(DashboardMessageBase msg)
         {
             Clients.All.broadcastDashboardMessage(msg);
         }
-        */
+        
     }
 }
