@@ -180,10 +180,10 @@ namespace DevOpsDashboard.Model.Tests
 
             DashboardMessageGitHub msg = new DashboardMessageGitHub(json, "push");
 
-            Assert.AreEqual(msg.Message, "baxterthehacker has pushed commits to repository 'public-repo'");
-            Assert.AreEqual(msg.Title, "Code push to 'public-repo'");
-            Assert.AreEqual(msg.Category, "code");
-            Assert.AreEqual(msg.Context, "");
+            Assert.AreEqual("baxterthehacker has pushed commits to repository 'public-repo'", msg.Message);
+            Assert.AreEqual( "Code push to 'public-repo'", msg.Title);
+            Assert.AreEqual("code", msg.Category);
+            Assert.AreEqual("",msg.Context);
 
         }
     }
