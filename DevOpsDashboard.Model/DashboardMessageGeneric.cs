@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevOpsDashboard.Model
 {
-    public class DashboardMessageGeneric:DashboadMessageBase
+    public class DashboardMessageGeneric:DashboardMessageBase
     {
         public DashboardMessageGeneric()
         {

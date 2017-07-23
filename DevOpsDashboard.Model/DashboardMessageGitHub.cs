@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevOpsDashboard.Model
 {
-    public class DashboardMessageGitHub : DashboadMessageBase
+    public class DashboardMessageGitHub : DashboardMessageBase
     {
         public DashboardMessageGitHub(string EventPayload, string EventType)
         {

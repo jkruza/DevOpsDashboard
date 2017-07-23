@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevOpsDashboard.Model
 {
-    public class DashboadMessageBase
+    public class DashboardMessageBase
     {
         public string Title { get; set; }
         public string Message { get; set; }
