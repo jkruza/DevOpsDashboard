@@ -5,7 +5,7 @@
 
 
 <div class="row" id="lists">
-    <div class="col-md-8"><ul id="list"></ul></div>
+    <div class="col-md-8"><div id="list"></div></div>
     <div class="col-md-4"><div id="blist"></div></div>
 </div>
 
@@ -61,8 +61,8 @@
                         break;
 
                     default:
-                        var s = json.Message;
-                         $("#list").append("<li>" + s + "</li>");
+                        var m = json.Message;
+                         $("#list").append("<p>" + m + "</p>");
                         while ($("#list").children().length > 20) {
                             $('#list div:eq(0)').remove();
                         }
