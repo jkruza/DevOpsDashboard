@@ -31,6 +31,13 @@ namespace DevOpsDashboard.Model
                     Status = json["resource"]["deployment"]["deploymentStatus"].ToString();
                     break;
 
+                case "ms.vss-release.deployment-started-event":
+                    Category = "Release";
+                    Context = json["resource"]["deployment"]["releaseDefinition"]["id"] + "_" + json["resource"]["deployment"]["releaseEnvironment"]["id"];
+                    Title = json["resource"]["deployment"]["releaseDefinition"]["name"] + ": " + json["resource"]["deployment"]["releaseDefinition"]["name"];
+                    Status = "Pending";
+                    break;
+
                 case "build.complete":
                     Category = "Build";
                     Context = json["resource"]["definition"]["id"] + "_" + json["resource"]["id"];
