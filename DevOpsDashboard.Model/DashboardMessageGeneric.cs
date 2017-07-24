@@ -27,6 +27,7 @@ namespace DevOpsDashboard.Model
             this.Context = String.Empty;
             Timestamp = DateTime.Now;
             this.Status = "Unknown";
+            Details = new string[] { };
         }
 
         public static DashboardMessageGeneric CreateFromJson(string EventPayload)

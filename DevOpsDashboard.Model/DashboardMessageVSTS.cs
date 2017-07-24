@@ -21,6 +21,7 @@ namespace DevOpsDashboard.Model
             Message = json["message"]["text"].ToString();
             Title = "VSTS Event";
             Category = "General";
+            Details = new string[] { };
 
             switch (json["eventType"].ToString())
             {

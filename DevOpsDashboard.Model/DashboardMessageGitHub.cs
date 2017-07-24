@@ -30,6 +30,7 @@ namespace DevOpsDashboard.Model
                     Message = "Github Event stub message";
                     Category = "General";
                     Context = String.Empty;
+                    Details = new string[] { };
                     break;
             }
 
