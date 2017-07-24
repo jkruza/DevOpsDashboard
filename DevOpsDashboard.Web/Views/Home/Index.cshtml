@@ -12,7 +12,7 @@
 
 
 @section scripts {
-    
+
     <!--Script references. -->
     <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
     <!--Reference the SignalR library. -->
@@ -25,86 +25,111 @@
             // Reference the auto-generated proxy for the hub.
             var dashboard = $.connection.dashboardMessageHub;
             // Create a function that the hub can call back to display messages.
-            dashboard.client.broadcastDashboardMessage = function (jsonString) {
-                if (typeof jsonString  == "string")
-                { var json = JSON.parse(jsonString); }
-                else {
-                    var json = jsonString;
-                }
-                var str = JSON.stringify(json, null, 2);
-              //  alert(str);
-                switch (json.Category) {
-
-                    case "Release":
-                    case "Build":
-                        var m = json.Message;
-                        var t = json.Title;
-                        var cls = "alert-info";
-                        var s = json.Status;
-                        switch (s)
-                        {
-                            case "succeeded": 
-                            case "success":
-                                cls = "alert-success";
-                                break;
-
-                            case "failed":
-                            case "rejected":
-                                cls = "alert-danger";
-                                break;
-                        }
-                        var inner = "";
-                        if (json.Details.length > 0) {
-                            var details = "";
-                            for (i = 0; i < json.Details.length; i++) {
-                                details += "<li>" + json.Details[i] + "</li>";
-                            }
-                            inner = "<ul>" + details + "</ul>";
-                        }
-                        $("#blist").append('<div class="alert '+cls+'"><strong>' + t+"</strong><p>" +m+ "</p>"+inner+"</div>");
-                        while ($("#blist").children().length > 20) {
-                            $('#blist div:eq(0)').remove();
-                        }
-                        break;
-
-                    default:
-                        var m = json.Message;
-                        var t = json.Title;
-                        var cls = "panel-default";
-                        var s = json.Status;
-                        switch (s) {
-                            case "succeeded":
-                            case "success":
-                                cls = "panel-success";
-                                break;
-
-                            case "failed":
-                            case "rejected":
-                                cls = "panel-danger";
-                                break;
-                        }
-                        var inner = "";
-                        if (json.Details.length > 0) {
-                            var details = "";
-                            for (i = 0; i < json.Details.length; i++) {
-                                details += "<li>" + json.Details[i] + "</li>";
-                            }
-                            inner = "<ul>" + details + "</ul>";
-                        }
-                        
-                        $("#list").append('<div class="panel ' + cls + '"><div class="panel-body">' + m +inner+ "</div></div>");
-                        while ($("#list").children().length > 20) {
-                            $('#list div:eq(0)').remove();
-                        }
-                        break;
-
-                }
-            };
+            dashboard.client.broadcastDashboardMessage = processMessage;
+            dashboard.client.pushFromCache = processCache;
 
             $.connection.hub.start().done(function () {
 
             });
         });
+
+        function processCache(cjsonString) {
+
+            if (typeof cjsonString == "string")
+            { var cjson = JSON.parse(cjsonString); }
+            else {
+                var cjson = cjsonString;
+            }
+            $("#blist").html('');
+            $("#list").html('');
+
+            console.log(cjson.length);
+            for (c = 0; c < cjson.length; c++) {
+
+                var j = cjson[c];
+                console.log(j);
+                processMessage(j);
+            }
+
+
+        }
+
+        function processMessage(jsonString) {
+            if (typeof jsonString == "string")
+            { var json = JSON.parse(jsonString); }
+            else {
+                var json = jsonString;
+            }
+            var str = JSON.stringify(json, null, 2);
+            //  alert(str);
+            switch (json.Category) {
+
+                case "Release":
+                case "Build":
+                    var m = json.Message;
+                    var t = json.Title;
+                    var cls = "alert-info";
+                    var s = json.Status;
+                    switch (s) {
+                        case "succeeded":
+                        case "success":
+                            cls = "alert-success";
+                            break;
+
+                        case "failed": ;
+                        case "rejected":
+                            cls = "alert-danger";
+                            break;
+                    }
+                    var inner = "";
+                    if (json.Details.length > 0) {
+                        var details = "";
+                        for (i = 0; i < json.Details.length; i++) {
+                            details += "<li>" + json.Details[i] + "</li>";
+                        }
+                        inner = "<ul>" + details + "</ul>";
+                    }
+                    $("#blist").append('<div class="alert ' + cls + '"><strong>' + t + "</strong><p>" + m + "</p>" + inner + "</div>");
+                    while ($("#blist").children().length > 20) {
+                        $('#blist div:eq(0)').remove();
+                    }
+                    break;
+
+                default:
+                    var m = json.Message;
+                    var t = json.Title;
+                    var cls = "panel-default";
+                    var s = json.Status;
+                    switch (s) {
+                        case "succeeded":
+                        case "success":
+                            cls = "panel-success";
+                            break;
+
+                        case "failed":
+                        case "rejected":
+                            cls = "panel-danger";
+                            break;
+                    }
+                    var inner = "";
+                    if (json.Details.length > 0) {
+                        var details = "";
+                        for (i = 0; i < json.Details.length; i++) {
+                            details += "<li>" + json.Details[i] + "</li>";
+                        }
+                        inner = "<ul>" + details + "</ul>";
+                    }
+
+                    $("#list").append('<div class="panel ' + cls + '"><div class="panel-body">' + m + inner + "</div></div>");
+                    while ($("#list").children().length > 20) {
+                        $('#list div:eq(0)').remove();
+                    }
+                    break;
+
+            }
+        };
+
+
         /*
 
 
