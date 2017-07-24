@@ -30,6 +30,7 @@ namespace DevOpsDashboard.Web.Controllers.API
 
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<DashboardMessageHub>();
             hubContext.Clients.All.broadcastDashboardMessage(msg);
+            DashboardMessageCache.Add(msg);
             return msg;
 
         }

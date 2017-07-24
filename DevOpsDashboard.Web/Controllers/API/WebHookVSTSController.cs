@@ -13,21 +13,15 @@ namespace DevOpsDashboard.Web.Controllers.API
 {
     public class WebHookVSTSController : ApiController
     {
-
-
-
         [HttpPost]
         [Route("api/webhook/vsts")]
         public async Task<DashboardMessageVSTS> PostRawBufferManual()
         {
-            
-        
             string RawJSON = await Request.Content.ReadAsStringAsync();
-
             DashboardMessageVSTS msg = new DashboardMessageVSTS(RawJSON);
-
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<DashboardMessageHub>();
             hubContext.Clients.All.broadcastDashboardMessage(msg);
+            DashboardMessageCache.Add(msg);
             return msg;
 
         }

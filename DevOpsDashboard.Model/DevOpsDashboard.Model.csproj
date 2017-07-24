@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DashboardMessageBase.cs" />
+    <Compile Include="DashboardMessageCache.cs" />
     <Compile Include="DashboardMessageGeneric.cs" />
     <Compile Include="DashboardMessageVSTS.cs" />
     <Compile Include="DashboardMessageGitHub.cs" />
