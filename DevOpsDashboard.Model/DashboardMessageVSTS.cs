@@ -18,7 +18,7 @@ namespace DevOpsDashboard.Model
 
             JObject json = JObject.Parse(EventPayload);
             
-            Message = json["message"]["text"].ToString();
+            Message = json["message"]["html"].ToString();
             Title = "VSTS Event";
             Category = "General";
             Details = new string[] { };
