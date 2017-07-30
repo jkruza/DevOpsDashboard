@@ -90,7 +90,7 @@
                         inner = "<ul>" + details + "</ul>";
                     }
                     $("#blist").append('<div class="alert ' + cls + '"><strong>' + t + "</strong><p>" + m + "</p>" + inner + "</div>");
-                    while ($("#blist").children().length > 20) {
+                    while ($("#blist").children().length > 8) {
                         $('#blist div:eq(0)').remove();
                     }
                     break;
@@ -121,7 +121,7 @@
                     }
 
                     $("#list").append('<div class="panel ' + cls + '"><div class="panel-body">' + m + inner + "</div></div>");
-                    while ($("#list").children().length > 20) {
+                    while ($("#list").children().length > 10) {
                         $('#list div:eq(0)').remove();
                     }
                     break;
