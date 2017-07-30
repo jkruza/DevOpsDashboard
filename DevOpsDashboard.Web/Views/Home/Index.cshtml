@@ -93,7 +93,7 @@
                     if (ctx != "") {
                         $("#blist").children("." + ctx).remove()
                     }
-                    $("#blist").append('<div class="' + ctx + 'alert ' + cls + '"><strong>' + t + "</strong><p>" + m + "</p>" + inner + "</div>");
+                    $("#blist").append('<div class="' + ctx + ' alert ' + cls + '"><strong>' + t + "</strong><p>" + m + "</p>" + inner + "</div>");
                     while ($("#blist").children().length > 8) {
                         $('#blist div:eq(0)').remove();
                     }
