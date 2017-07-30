@@ -43,7 +43,7 @@ namespace DevOpsDashboard.Model
 
                 case "build.complete":
                     Category = "Build";
-                    Context = json["resource"]["definition"]["id"] + "_" + json["resource"]["id"];
+                    Context = json["resource"]["definition"]["id"].ToString(); // Add branch here?
                     Title = json["resource"]["definition"]["name"] + ": " + json["resource"]["buildNumber"];
                     Status = json["resource"]["status"].ToString();
                     break;

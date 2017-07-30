@@ -68,6 +68,7 @@
                 case "Build":
                     var m = json.Message;
                     var t = json.Title;
+                    var ctx = json.Context;
                     var cls = "alert-info";
                     var s = json.Status;
                     switch (s) {
@@ -89,7 +90,10 @@
                         }
                         inner = "<ul>" + details + "</ul>";
                     }
-                    $("#blist").append('<div class="alert ' + cls + '"><strong>' + t + "</strong><p>" + m + "</p>" + inner + "</div>");
+                    if (ctx != "") {
+                        $("#blist").children("." + ctx).remove()
+                    }
+                    $("#blist").append('<div class="' + ctx + 'alert ' + cls + '"><strong>' + t + "</strong><p>" + m + "</p>" + inner + "</div>");
                     while ($("#blist").children().length > 8) {
                         $('#blist div:eq(0)').remove();
                     }
@@ -98,6 +102,7 @@
                 default:
                     var m = json.Message;
                     var t = json.Title;
+                    var ctx = json.Context;
                     var cls = "panel-default";
                     var s = json.Status;
                     switch (s) {
@@ -119,8 +124,10 @@
                         }
                         inner = "<ul>" + details + "</ul>";
                     }
-
-                    $("#list").append('<div class="panel ' + cls + '"><div class="panel-body">' + m + inner + "</div></div>");
+                    if (ctx != "") {
+                        $("#list").children("."+ctx).remove()
+                    }
+                    $("#list").append('<div class="' + ctx + ' panel ' + cls + '"><div class="panel-body">' + m + inner + "</div></div>");
                     while ($("#list").children().length > 10) {
                         $('#list div:eq(0)').remove();
                     }
