@@ -24,6 +24,13 @@ namespace DevOpsDashboard.Model
 
                     break;
 
+                case "pull_request":
+                    Category = "Code";
+                    Context = "";
+                    ParseEventPullRequest(EventPayload);
+                    
+                    break;
+
 
                 default:
                     Title = "Github Event";
@@ -35,6 +42,14 @@ namespace DevOpsDashboard.Model
             }
 
             
+        }
+
+        private void ParseEventPullRequest(string EventJSON)
+        {
+            JObject json = JObject.Parse(EventJSON);
+            Title = String.Format("Pull request in '{0}'", json["repository"]["name"]);
+            Message = String.Format("{0} has {1} pull request to {2} branch {3}", json["sender"]["login"], json["action"], json["repository"]["name"],json["pull_request"]["base"]["ref"]);
+            Details = new string[] { json["pull_request"]["title"].ToString() };
         }
 
         private void ParseEventPush(string EventJSON)
