@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DevOpsDashboard.Models;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace DevOpsDashboard.Web.Controllers.API
 {
@@ -10,18 +11,20 @@ namespace DevOpsDashboard.Web.Controllers.API
     public class WebHookGitHubController : ControllerBase
     {
 
-
-
         [HttpPost]
         [Route("api/webhook/github")]
         public async Task<DashboardMessageGitHub> PostRawBufferManual()
         {
             
-            IEnumerable<string> headerValues = Request.Headers.GetValues("X-GitHub-Event");
+            IEnumerable<string> headerValues = Request.Headers["X-GitHub-Event"];
             string GitHubEvent = headerValues.FirstOrDefault();
 
-            string RawJSON = await Request.Content.ReadAsStringAsync();
-
+            StreamReader sr=new StreamReader(Request.Body);
+            string RawJSON="";
+            while (!sr.EndOfStream)
+            {
+                RawJSON+=await sr.ReadLineAsync();
+            }
             DashboardMessageGitHub msg = new DashboardMessageGitHub(RawJSON, GitHubEvent);
 
             //var hubContext = GlobalHost.ConnectionManager.GetHubContext<DashboardMessageHub>();

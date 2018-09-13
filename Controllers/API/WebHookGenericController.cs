@@ -12,6 +12,7 @@ namespace DevOpsDashboard.Web.Controllers.API
         
 
         // POST api/<controller>
+        [HttpPost]
         [Route("api/webhook/generic")]
         public DashboardMessageGeneric Post([FromBody]DashboardMessageGeneric msg)
         {
@@ -20,15 +21,6 @@ namespace DevOpsDashboard.Web.Controllers.API
             //DashboardMessageCache.Add(msg);
             return msg;
         }
-        /*
-        [HttpPost]
-       [Route("api/webhook/generic/json")]
-        public async Task PostRawBufferManual()
-        {
-            string RawJSON = await Request.Content.ReadAsStringAsync();
-            DashboardMessageGeneric msg=DashboardMessageGeneric.CreateFromJson(RawJSON);
-            
-        }
-   */
+       
     }
 }
